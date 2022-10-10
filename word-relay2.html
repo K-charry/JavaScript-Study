@@ -1,3 +1,5 @@
+<!-- 이벤트를 달 때 사용하는 메서드(addEventListener(콜백함수))-->
+<!-- **콜백함수: 다른 함수의 인자로써 넘겨진 후 특정 이벤트에 의해 호출되는 함수-->
 <!DOCTYPE html>
 <html lang="ko"> 
 <head>
@@ -16,6 +18,25 @@
 	const number = parseInt(prompt("몇 명이 참가하나요?"), 10)
 	alert(number) 
 	const yesOrNo = confirm('맞나요?')
+
+    document.querySelector('input').addEventListener('input', (event) => { // 'function()' 대신에 '() =>' 이렇게 대신해서 쓸 수 있다. (용도는 조금 다르다.) 
+        console.log('글자 입력', event.target.value);  
+        /* 사용자가 글자를 입력할 때 어떤 글자를 입력했는지 console창에서 확인하기 위해 
+        event객체에 target객체 안에 value(입력값)을 넣어주고 사용자가 입력 후 버튼을 클릭했을 때 
+        제일 마지막에 입력한 글자가 사용자가 입력한 값이라고 확인할 수 있다. */
+    });
+    /*
+    document.querySelector('button').addEventListener('click', function() {
+        console.log('버튼 클릭')
+    });
+    */
+    const onClick = function() { // 이렇게 함수를 바깥으로 빼줄 수도 있다.
+        console.log('버튼 클릭')
+        // return undefined; 이 부분이 생략돼 있음.
+    }
+    document.querySelector('button').addEventListener('click', onClick); 
+    //함수를 넣어주는 자리에 onClick() 이렇게 해주면  undefined를 호출하는 것과 같음.
+
 </script>
 </body>
 
